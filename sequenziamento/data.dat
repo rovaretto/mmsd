@@ -1,0 +1,68 @@
+set I :=
+Adolfo
+Alessandro
+Andrea
+Antonio
+Arturo
+;
+
+param o :=
+Adolfo A
+Alessandro B
+Andrea A
+Antonio B
+Arturo A
+;
+
+param s :=
+Adolfo 0
+Alessandro 0
+Andrea 0
+Antonio 0
+Arturo 0
+;
+
+param e :=
+Adolfo 60
+Alessandro 60
+Andrea 60
+Antonio 60
+Arturo 60
+;
+
+param p :=
+Adolfo 10
+Alessandro 20
+Andrea 20
+Antonio 30
+Arturo 25
+;
+
+param q :=
+('Adolfo', 'Adolfo') 0
+('Adolfo', 'Alessandro') 0
+('Adolfo', 'Andrea') 1
+('Adolfo', 'Antonio') 0
+('Adolfo', 'Arturo') 1
+('Alessandro', 'Adolfo') 0
+('Alessandro', 'Alessandro') 0
+('Alessandro', 'Andrea') 0
+('Alessandro', 'Antonio') 1
+('Alessandro', 'Arturo') 0
+('Andrea', 'Adolfo') 1
+('Andrea', 'Alessandro') 0
+('Andrea', 'Andrea') 0
+('Andrea', 'Antonio') 0
+('Andrea', 'Arturo') 1
+('Antonio', 'Adolfo') 0
+('Antonio', 'Alessandro') 1
+('Antonio', 'Andrea') 0
+('Antonio', 'Antonio') 0
+('Antonio', 'Arturo') 0
+('Arturo', 'Adolfo') 1
+('Arturo', 'Alessandro') 0
+('Arturo', 'Andrea') 1
+('Arturo', 'Antonio') 0
+('Arturo', 'Arturo') 0
+;
+
