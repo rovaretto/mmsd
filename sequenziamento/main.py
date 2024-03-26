@@ -18,5 +18,10 @@ results = solver_manager.solve(instance, solver="cplex", load_solutions=True)
 for v in instance.component_data_objects(Var, active=True):
     print(v, value(v))
 
+for i in instance.I:
+    print(i, value(instance.c[i]))
+
+
+
 # Stampa i risultati
 print(results)
