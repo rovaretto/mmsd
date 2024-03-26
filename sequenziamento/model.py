@@ -36,15 +36,17 @@ model.obj = Objective(expr=obj_exp, sense=minimize)
 
 # VINCOLO 1
 def const_1(model, i, l):
-    return model.y[i, l] + model.y[l, i] == 1
-
+    if i != l:
+        return model.y[i, l] + model.y[l, i] == 1
+    else:
+        return model.y[i, l] == 1
 
 model.const_1 = Constraint(model.I, model.I, rule=const_1)
 
 
 # VINCOLO 2
 def const_2(model, i):
-    return model.z[i] == 1 + sum(model.y[l, i] for l in model.I)
+    return model.z[i] == sum(model.y[l, i] for l in model.I)
 
 
 model.const_2 = Constraint(model.I, rule=const_2)
@@ -100,7 +102,7 @@ model.const_8 = Constraint(model.I, rule=const_8)
 
 # VINCOLO 9
 def const_9(model, i, l):
-    return model.h[1] >= model.c[i] - model.c[l] - model.BigM * (1 - model.d[i, l]) - model.BigM * (
+    return model.h[1] >= model.c[i] - model.c[l] - model.BigM * (1 - model.d[l, i]) - model.BigM * (
             1 - model.v[i]) - model.BigM * (1 - model.w[l])
 
 

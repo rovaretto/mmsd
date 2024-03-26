@@ -39,30 +39,30 @@ Arturo 25
 ;
 
 param q :=
-('Adolfo', 'Adolfo') 0
+('Adolfo', 'Adolfo') 1
 ('Adolfo', 'Alessandro') 0
 ('Adolfo', 'Andrea') 1
 ('Adolfo', 'Antonio') 0
 ('Adolfo', 'Arturo') 1
 ('Alessandro', 'Adolfo') 0
-('Alessandro', 'Alessandro') 0
+('Alessandro', 'Alessandro') 1
 ('Alessandro', 'Andrea') 0
 ('Alessandro', 'Antonio') 1
 ('Alessandro', 'Arturo') 0
 ('Andrea', 'Adolfo') 1
 ('Andrea', 'Alessandro') 0
-('Andrea', 'Andrea') 0
+('Andrea', 'Andrea') 1
 ('Andrea', 'Antonio') 0
 ('Andrea', 'Arturo') 1
 ('Antonio', 'Adolfo') 0
 ('Antonio', 'Alessandro') 1
 ('Antonio', 'Andrea') 0
-('Antonio', 'Antonio') 0
+('Antonio', 'Antonio') 1
 ('Antonio', 'Arturo') 0
 ('Arturo', 'Adolfo') 1
 ('Arturo', 'Alessandro') 0
 ('Arturo', 'Andrea') 1
 ('Arturo', 'Antonio') 0
-('Arturo', 'Arturo') 0
+('Arturo', 'Arturo') 1
 ;
 

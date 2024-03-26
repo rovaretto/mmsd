@@ -13,7 +13,7 @@ os.environ['NEOS_EMAIL'] = 'emanuele.rovaretto@edu.unito.it'
 solver_manager = SolverManagerFactory('neos')
 
 # Risolvi il problema di ottimizzazione
-results = solver_manager.solve(instance, solver="minos", load_solutions=True)
+results = solver_manager.solve(instance, solver="cplex", load_solutions=True)
 
 for v in instance.component_data_objects(Var, active=True):
     print(v, value(v))
