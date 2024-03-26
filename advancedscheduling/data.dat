@@ -28,14 +28,15 @@ Dermatologia
 ;
 
 param p :=
-Adolfo 10
-Alessandro 20
-Andrea 15
-Antonio 20
-Arturo 40
-Augusto 10
-Bartolomeo 20
-Benedetto 25
+Adolfo 50
+Alessandro 80
+Andrea 95
+Antonio 60
+Arturo 70
+
+Augusto 60
+Bartolomeo 35
+Benedetto 85
 Bruno 30
 Carlo 25
 ;
@@ -55,21 +56,21 @@ param q :=
 (Andrea, Ortopedia) 1
 (Antonio, Ortopedia) 1
 (Arturo, Ortopedia) 1
-(Augusto, Ortopedia) 1
-(Bartolomeo, Ortopedia) 1
-(Benedetto, Ortopedia) 1
-(Bruno, Ortopedia) 1
-(Carlo, Ortopedia) 1
+(Augusto, Ortopedia) 0
+(Bartolomeo, Ortopedia) 0
+(Benedetto, Ortopedia) 0
+(Bruno, Ortopedia) 0
+(Carlo, Ortopedia) 0
 (Adolfo, Dermatologia) 0
 (Alessandro, Dermatologia) 0
 (Andrea, Dermatologia) 0
 (Antonio, Dermatologia) 0
 (Arturo, Dermatologia) 0
-(Augusto, Dermatologia) 0
-(Bartolomeo, Dermatologia) 0
-(Benedetto, Dermatologia) 0
-(Bruno, Dermatologia) 0
-(Carlo, Dermatologia) 0
+(Augusto, Dermatologia) 1
+(Bartolomeo, Dermatologia) 1
+(Benedetto, Dermatologia) 1
+(Bruno, Dermatologia) 1
+(Carlo, Dermatologia) 1
 ;
 
 param tau :=
