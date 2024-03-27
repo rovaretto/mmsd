@@ -20,6 +20,8 @@ set T :=
 Lunedi
 Martedi
 Mercoledi
+Giovedi
+Venerdi
 ;
 
 set J :=
@@ -42,12 +44,16 @@ Carlo 25
 ;
 
 param s :=
-(A, Lunedi) 120
-(A, Martedi) 120
-(A, Mercoledi) 120
-(B, Lunedi) 120
-(B, Martedi) 120
-(B, Mercoledi) 120
+(A, Lunedi) 480
+(A, Martedi) 480
+(A, Mercoledi) 480
+(A, Giovedi) 480
+(A, Venerdi) 480
+(B, Lunedi) 480
+(B, Martedi) 480
+(B, Mercoledi) 480
+(B, Giovedi) 480
+(B, Venerdi) 480
 ;
 
 param q :=

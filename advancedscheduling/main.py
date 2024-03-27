@@ -23,3 +23,6 @@ for t in instance.T:
                 print(t,k,i)
 
 print(results)
+
+
+# TT =
