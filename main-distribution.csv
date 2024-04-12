@@ -1,4 +1,3 @@
-hospital LOC,surgical specialty,type of surgical patient,(main) ops code,process time,distribution type,parameter1,parameter2,expval,var
 Basic & Regular,General,inpatient,1-653,AN emergence,lognormal,"1,59782238","0,6741858934","6,203326556","22,14317271"
 Basic & Regular,General,inpatient,1-653,AN induction,lognormal,"1,980694593","0,5021391517","8,221613313","19,38493829"
 Basic & Regular,General,inpatient,1-653,Incision-to-closure,lognormal,"2,529958165","0,7196641252","16,2633871","179,4687961"

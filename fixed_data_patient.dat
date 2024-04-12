@@ -1,0 +1,60 @@
+set K :=
+A
+B
+C
+D
+;
+
+set T :=
+Lunedi
+Martedi
+Mercoledi
+Giovedi
+Venerdi
+;
+
+set J :=
+General
+Gyn & Obstetrics
+Otolaryngology
+Trauma
+;
+
+param s :=
+(A, Lunedi) 480
+(A, Martedi) 480
+(A, Mercoledi) 480
+(A, Giovedi) 480
+(A, Venerdi) 480
+(B, Lunedi) 480
+(B, Martedi) 480
+(B, Mercoledi) 480
+(B, Giovedi) 480
+(B, Venerdi) 480
+(C, Lunedi) 480
+(C, Martedi) 480
+(C, Mercoledi) 480
+(C, Giovedi) 480
+(C, Venerdi) 480
+(D, Lunedi) 480
+(D, Martedi) 480
+(D, Mercoledi) 480
+(D, Giovedi) 480
+(D, Venerdi) 480
+;
+
+
+param tau :=
+(A, Lunedi, Ortopedia) 1
+(A, Lunedi, Dermatologia) 0
+(A, Martedi, Ortopedia) 1
+(A, Martedi, Dermatologia) 0
+(A, Mercoledi, Ortopedia) 1
+(A, Mercoledi, Dermatologia) 0
+(B, Lunedi, Ortopedia) 0
+(B, Lunedi, Dermatologia) 1
+(B, Martedi, Ortopedia) 0
+(B, Martedi, Dermatologia) 1
+(B, Mercoledi, Ortopedia) 0
+(B, Mercoledi, Dermatologia) 1
+;
