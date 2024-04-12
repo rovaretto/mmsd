@@ -45,16 +45,84 @@ param s :=
 
 
 param tau :=
-(A, Lunedi, Ortopedia) 1
-(A, Lunedi, Dermatologia) 0
-(A, Martedi, Ortopedia) 1
-(A, Martedi, Dermatologia) 0
-(A, Mercoledi, Ortopedia) 1
-(A, Mercoledi, Dermatologia) 0
-(B, Lunedi, Ortopedia) 0
-(B, Lunedi, Dermatologia) 1
-(B, Martedi, Ortopedia) 0
-(B, Martedi, Dermatologia) 1
-(B, Mercoledi, Ortopedia) 0
-(B, Mercoledi, Dermatologia) 1
+(A, Lunedi, General) 1
+(A, Lunedi, Gyn & Obstetrics) 0
+(A, Lunedi, Otolaryngology) 0
+(A, Lunedi, Trauma) 0
+(A, Martedi, General) 1
+(A, Martedi, Gyn & Obstetrics) 0
+(A, Martedi, Otolaryngology) 0
+(A, Martedi, Trauma) 0
+(A, Mercoledi, General) 1
+(A, Mercoledi, Gyn & Obstetrics) 0
+(A, Mercoledi, Otolaryngology) 0
+(A, Mercoledi, Trauma) 0
+(A, Giovedi, General) 1
+(A, Giovedi, Gyn & Obstetrics) 0
+(A, Giovedi, Otolaryngology) 0
+(A, Giovedi, Trauma) 0
+(A, Venerdi, General) 1
+(A, Venerdi, Gyn & Obstetrics) 0
+(A, Venerdi, Otolaryngology) 0
+(A, Venerdi, Trauma) 0
+(B, Lunedi, General) 0
+(B, Lunedi, Gyn & Obstetrics) 1
+(B, Lunedi, Otolaryngology) 0
+(B, Lunedi, Trauma) 0
+(B, Martedi, General) 0
+(B, Martedi, Gyn & Obstetrics) 1
+(B, Martedi, Otolaryngology) 0
+(B, Martedi, Trauma) 0
+(B, Mercoledi, General) 0
+(B, Mercoledi, Gyn & Obstetrics) 1
+(B, Mercoledi, Otolaryngology) 0
+(B, Mercoledi, Trauma) 0
+(B, Giovedi, General) 0
+(B, Giovedi, Gyn & Obstetrics) 1
+(B, Giovedi, Otolaryngology) 0
+(B, Giovedi, Trauma) 0
+(B, Venerdi, General) 0
+(B, Venerdi, Gyn & Obstetrics) 1
+(B, Venerdi, Otolaryngology) 0
+(B, Venerdi, Trauma) 0
+(C, Lunedi, General) 0
+(C, Lunedi, Gyn & Obstetrics) 0
+(C, Lunedi, Otolaryngology) 1
+(C, Lunedi, Trauma) 0
+(C, Martedi, General) 0
+(C, Martedi, Gyn & Obstetrics) 0
+(C, Martedi, Otolaryngology) 1
+(C, Martedi, Trauma) 0
+(C, Mercoledi, General) 0
+(C, Mercoledi, Gyn & Obstetrics) 0
+(C, Mercoledi, Otolaryngology) 1
+(C, Mercoledi, Trauma) 0
+(C, Giovedi, General) 0
+(C, Giovedi, Gyn & Obstetrics) 0
+(C, Giovedi, Otolaryngology) 1
+(C, Giovedi, Trauma) 0
+(C, Venerdi, General) 0
+(C, Venerdi, Gyn & Obstetrics) 0
+(C, Venerdi, Otolaryngology) 1
+(C, Venerdi, Trauma) 0
+(D, Lunedi, General) 0
+(D, Lunedi, Gyn & Obstetrics) 0
+(D, Lunedi, Otolaryngology) 0
+(D, Lunedi, Trauma) 1
+(D, Martedi, General) 0
+(D, Martedi, Gyn & Obstetrics) 0
+(D, Martedi, Otolaryngology) 0
+(D, Martedi, Trauma) 1
+(D, Mercoledi, General) 0
+(D, Mercoledi, Gyn & Obstetrics) 0
+(D, Mercoledi, Otolaryngology) 0
+(D, Mercoledi, Trauma) 1
+(D, Giovedi, General) 0
+(D, Giovedi, Gyn & Obstetrics) 0
+(D, Giovedi, Otolaryngology) 0
+(D, Giovedi, Trauma) 1
+(D, Venerdi, General) 0
+(D, Venerdi, Gyn & Obstetrics) 0
+(D, Venerdi, Otolaryngology) 0
+(D, Venerdi, Trauma) 1
 ;
