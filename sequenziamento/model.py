@@ -6,14 +6,14 @@ model.BigM = 1000
 
 model.I = Set()
 
+#I pazienti nella stessa sala del paziente i
+model.Io = Param(model.I)
 # sala del paziente i
 model.o = Param(model.I)
 # tempo di inizio della sala del paziente i
 model.s = Param(model.I)
 # tempo di fine della sala del paziente i
 model.e = Param(model.I)
-# se 1 i e l stanno nella stessa sala operatoria
-model.q = Param(model.I, model.I, domain=Binary)
 # durata degli interventi del paziente i
 model.p = Param(model.I, domain=NonNegativeReals)
 
@@ -22,13 +22,13 @@ model.c = Var(model.I, domain=NonNegativeReals)
 model.d = Var(model.I, model.I, domain=Binary)
 model.v = Var(model.I, domain=Binary)
 model.w = Var(model.I, domain=Binary)
-model.h = Var([1],domain=NonNegativeReals)
+model.h = Var(domain=NonNegativeReals)
 model.z = Var(model.I, domain=NonNegativeIntegers)
 
 
 ##F OBBIETTIVO
 def obj_exp(model):
-    return model.h[1]
+    return model.h
 
 
 model.obj = Objective(expr=obj_exp, sense=minimize)
@@ -70,7 +70,7 @@ model.const_4 = Constraint(model.I, model.I, rule=const_4)
 
 # VINCOLO 5  -- RIGURDARE I_{O(I)}
 def const_5(model, i):
-    return model.c[i] == model.s[i] + sum(model.q[i, l] * model.p[l] * model.y[l, i] for l in model.I)
+    return model.c[i] == model.s[i] + sum(model.p[l] * model.y[l, i] for l in model.Io[i])
 
 
 model.const_5 = Constraint(model.I, rule=const_5)
@@ -102,7 +102,7 @@ model.const_8 = Constraint(model.I, rule=const_8)
 
 # VINCOLO 9
 def const_9(model, i, l):
-    return model.h[1] >= model.c[i] - model.c[l] - model.BigM * (1 - model.d[l, i]) - model.BigM * (
+    return model.h >= model.c[i] - model.c[l] - model.BigM * (1 - model.d[l, i]) - model.BigM * (
             1 - model.v[i]) - model.BigM * (1 - model.w[l])
 
 

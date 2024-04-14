@@ -3,7 +3,7 @@ import os
 from advancedscheduling.model import *
 
 data = DataPortal()
-data.load(filename="data.dat")
+data.load(filename="data_patient.dat")
 instance = model.create_instance(data)
 
 # Imposta l'indirizzo email NEOS
@@ -20,8 +20,8 @@ for t in instance.T:
     for k in instance.K:
         for i in instance.I:
             if instance.x[i,k,t].value == 1:
-                print(t,k,i)
-
+                print(t,k,i, instance.p[i])
+    print("---------------------------")
 print(results)
 
 

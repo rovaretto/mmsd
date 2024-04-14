@@ -11,7 +11,6 @@ def extractDistribution(loc, specialty, typePatient):
     opcode_data = {}
 
     for righe in righeFile:
-        print(righe)
         if righe[0] == loc and righe[1] == specialty and righe[2] == typePatient:
             opcode = righe[3]  # Supponendo che l'opcode sia sempre all'indice 3
             if opcode not in opcode_data:
@@ -47,7 +46,6 @@ def caluclateDistribution(distribution):
         opcode_distribution[op] = numpy.ceil(totalTime)
     return opcode_distribution
 
-
 #genera pazienti di tutte le specialità
 def generateAllPatient():
     distribution = {}
@@ -59,7 +57,6 @@ def generateAllPatient():
 
     return distribution
 
-
 #genera pazienti con il minutaggio massimo per ogni specialità
 def generatePatientMaxMin(minute):
     distribution = generateAllPatient()
@@ -70,20 +67,21 @@ def generatePatientMaxMin(minute):
             for typePatient in ['inpatient', 'outpatient']:
                 for loc in ['Basic & Regular', 'Maximum excl. University Clinics', 'Specialized']:
                     dist = distribution[loc, speciality, typePatient].popitem()
-                    result[speciality, dist[0]] = dist[1]
+                    result[loc,speciality,typePatient, dist[0]] = dist[1]
                     timeSpeciality = timeSpeciality + dist[1]
-        print(timeSpeciality)
         timeSpeciality = 0
-
-    for elem in result:
-        print(elem, result[elem])
 
     return result
 
+def hashing(key):
+    return key[0][0] + "-" + key[1][0] + key[1][1] + "-" + key[2][0] + "-" + key[3]
+
+
 def createSetI(patient):
     setI = "set I :=\n"
-    for row in patient:
-        setI = setI + row[1] + " \n"
+    for key in patient.keys():
+
+        setI = setI + hashing(key) + " \n"
     setI += ";\n"
     return setI
 
@@ -97,15 +95,63 @@ def createSetT():
 def createSetJ():
     return ""
 
+
+def createParamP(patient):
+    result = "param p :=\n"
+    for patKey in patient.keys():
+        spec = patKey[1]
+        opcode = hashing(patKey)
+        result += opcode + " " + str(patient[patKey]) + "\n"
+    result += ";\n"
+    return result
+
+def createParamS():
+    result = "param s :=\n"
+    for sala in ['A', 'B', 'C', 'D']:
+        for giorno in ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi','Venerdi']:
+            result += '(' + sala + ", " + giorno + ') 480' + "\n"
+    result += ";\n"
+    return result
+
+
+def createParamQ(patient):
+    result = "param q :=\n"
+    for patKey in patient.keys():
+        specPat = patKey[1]
+        opcode = hashing(patKey)
+        for speciality in ['General', 'Gyn & Obstetrics','Otolaryngology', 'Trauma']:
+            if speciality == specPat:
+                result += '(' +opcode +', '+ speciality + ') 1' + "\n"
+            else:
+                result += '(' +opcode +', '+ speciality + ') 0' + "\n"
+    result += ";\n"
+    return result
+
+
+
 def createFilePatient():
     patient = generatePatientMaxMin(60 * 8 * 5 * 1.5)
     setI = createSetI(patient)
-    setK = createSetK()
-    setT = createSetT()
+
+    file_fixed_data = open('fixed_data_patient.dat', 'r')
+    fixed_data = file_fixed_data.read()
+    file_fixed_data.close()
+
+    paramP = createParamP(patient)
+    paramS = createParamS()
+    paramQ = createParamQ(patient)
+
 
     file = open('data_patient.dat', 'w')
     file.write(setI)
-    file.close()
 
+    file.write(fixed_data)
+
+    file.write(paramS)
+    file.write(paramP)
+    file.write(paramQ)
+
+
+    file.close()
 
 createFilePatient()

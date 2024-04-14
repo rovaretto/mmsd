@@ -25,10 +25,8 @@ Venerdi
 ;
 
 set J :=
-General
-Gyn & Obstetrics
-Otolaryngology
-Trauma
+Ortopedia
+Dermatologia
 ;
 
 param p :=
