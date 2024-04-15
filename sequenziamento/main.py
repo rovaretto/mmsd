@@ -18,26 +18,24 @@ results = solver_manager.solve(instance, solver="cplex", load_solutions=True)
 # for v in instance.component_data_objects(Var, active=True):
 #     print(v, value(v))
 
-patSalaA = {}
-patSalaB = {}
-patSalaC = {}
-for i in instance.I:
-    if instance.o[i] == 'A':
-        patSalaA[i] = value(instance.c[i])
-    elif instance.o[i] == 'B':
-        patSalaB[i] = value(instance.c[i])
-    else:
-        patSalaC[i] = value(instance.c[i])
+sale = {'A': {}, 'B': {}, 'C': {}}
 
-patSalaA = dict(sorted(patSalaA.items(),key=lambda x:x[1]))
-patSalaB = dict(sorted(patSalaB.items(),key=lambda x:x[1]))
-patSalaC = dict(sorted(patSalaC.items(),key=lambda x:x[1]))
+for i in instance.I:
+    sale[instance.o[i]][i] = value(instance.c[i])
+
+for s in sale.keys():
+    sale[s] = dict(sorted(sale[s].items(),key=lambda x:x[1]))
 
 file = open('data_patient_OUTPUT.data','w')
-file.write(patSalaA)
-file.write(patSalaB)
-file.write(patSalaC)
+for s in sale.keys():
+    file.write("SALA " + s +'\n')
+    for i in sale[s].keys():
+        file.write(str(sale[s][i]) + ' : ' + i + '\n')
+file.write("max BIM: " + str(value(instance.h)))
 file.close()
+
+for v in instance.component_data_objects(Var, active=True):
+    print(v, value(v))
 
 # param q :=
 # (Adolfo, 'Adolfo') 1

@@ -7,9 +7,9 @@ model.BigM = 1000
 model.I = Set()
 
 #I pazienti nella stessa sala del paziente i
-model.Io = Param(model.I)
+model.Io = Param(model.I,within=Any)
 # sala del paziente i
-model.o = Param(model.I)
+model.o = Param(model.I, within=Any)
 # tempo di inizio della sala del paziente i
 model.s = Param(model.I)
 # tempo di fine della sala del paziente i
@@ -22,8 +22,8 @@ model.c = Var(model.I, domain=NonNegativeReals)
 model.d = Var(model.I, model.I, domain=Binary)
 model.v = Var(model.I, domain=Binary)
 model.w = Var(model.I, domain=Binary)
-model.h = Var(domain=NonNegativeReals)
 model.z = Var(model.I, domain=NonNegativeIntegers)
+model.h = Var(domain=NonNegativeIntegers)
 
 
 ##F OBBIETTIVO
@@ -82,11 +82,19 @@ def const_6(model, i, l):
 
 
 model.const_6 = Constraint(model.I, model.I, rule=const_6)
+#
+# # VINCOLO 6 bis
+# def const_6bis(model, i, l):
+#     return model.z[l] - model.z[i] <= 2 - model.BigM * model.d[i, l]
+#
+#
+# model.const_6bis = Constraint(model.I, model.I, rule=const_6bis)
+
 
 
 # VINCOLO 7
 def const_7(model, i):
-    return model.c[i] >= model.e[i] - model.BigM * model.v[i]
+    return model.c[i] >= model.e[i] + 1 - model.BigM * model.v[i]
 
 
 model.const_7 = Constraint(model.I, rule=const_7)
@@ -94,7 +102,7 @@ model.const_7 = Constraint(model.I, rule=const_7)
 
 # VINCOLO 8
 def const_8(model, i):
-    return model.c[i] <= model.s[i] + model.BigM * model.w[i]
+    return model.c[i] <= model.s[i] - 1 + model.BigM * model.w[i]
 
 
 model.const_8 = Constraint(model.I, rule=const_8)
@@ -107,3 +115,9 @@ def const_9(model, i, l):
 
 
 model.const_9 = Constraint(model.I, model.I, rule=const_9)
+
+#VINCOLO 10
+def const_10(model,i):
+    return model.h >= model.c[i] - model.s[i] - model.BigM * (sum(model.y[l, i] for l in model.I)-1)
+
+model.const_10 = Constraint(model.I,rule=const_10)

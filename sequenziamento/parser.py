@@ -61,7 +61,7 @@ def createParamIo(patient):
             pat2 = pat2.split(" ")
             sala2 = pat2[1]
             opcode2 = pat2[2]
-            if sala1 == sala2 and opcode1 != opcode2:
+            if sala1 == sala2:
                 result += opcode2 + ","
         result = result[:-1]
         result += "]\n"

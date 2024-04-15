@@ -20,8 +20,6 @@ set T :=
 Lunedi
 Martedi
 Mercoledi
-Giovedi
-Venerdi
 ;
 
 set J :=
@@ -47,13 +45,9 @@ param s :=
 (A, Lunedi) 480
 (A, Martedi) 480
 (A, Mercoledi) 480
-(A, Giovedi) 480
-(A, Venerdi) 480
 (B, Lunedi) 480
 (B, Martedi) 480
 (B, Mercoledi) 480
-(B, Giovedi) 480
-(B, Venerdi) 480
 ;
 
 param q :=
