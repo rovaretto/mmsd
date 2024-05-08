@@ -3,16 +3,16 @@ import os
 from sequenziamento.model import *
 
 data = DataPortal()
-data.load(filename='data_patient.dat')
+data.load(filename='data.dat')
 instance = model.create_instance(data)
 
 # Imposta l'indirizzo email NEOS
 os.environ['NEOS_EMAIL'] = 'emanuele.rovaretto@edu.unito.it'
 
 # Imposta il solutore su NEOS
-# solver_manager = SolverManagerFactory('neos')
 solver_manager = SolverFactory('cplex', executable="/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux/cplex")
-solver_manager.options['timelimit'] = 4800
+
+#solver_manager = SolverManagerFactory('neos')
 
 # Risolvi il problema di ottimizzazione
 results = solver_manager.solve(instance)
@@ -20,7 +20,7 @@ results = solver_manager.solve(instance)
 # for v in instance.component_data_objects(Var, active=True):
 #     print(v, value(v))
 
-sale = {'A': {}, 'B': {}, 'C': {},'D':{}}
+sale = {'A': {}, 'B': {}, 'C': {}}
 
 for i in instance.I:
     sale[instance.o[i]][i] = value(instance.c[i])
@@ -28,7 +28,7 @@ for i in instance.I:
 for s in sale.keys():
     sale[s] = dict(sorted(sale[s].items(),key=lambda x:x[1]))
 
-file = open('data_patient_OUTPUT.data','w')
+file = open('data_patient_OUTPUT_1.data','w')
 for s in sale.keys():
     file.write("SALA " + s +'\n')
     for i in sale[s].keys():
@@ -38,7 +38,6 @@ file.close()
 
 for v in instance.component_data_objects(Var, active=True):
     print(v, value(v))
-print(results)
 
 # param q :=
 # (Adolfo, 'Adolfo') 1
