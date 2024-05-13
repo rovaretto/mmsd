@@ -1,14 +1,9 @@
 import numpy as np
 
-# vetSalaA = [64.0, 135.0, 62.0, 66.0, 80.0, 73.0]
-# vetSalaB = [107.0, 135.0, 221.0, 17.0]
-# vetSalaC = [29.0, 129.0, 88.0, 234.0]
-# vetSalaD = [130.0, 36.0, 61.0, 29.0, 68.0, 81.0, 75.0]
-
-vetSalaA = np.array([64.0, 135.0, 62.0, 66.0, 80.0, 73.0])
-vetSalaB = np.array([107.0, 135.0, 221.0, 17.0])
-vetSalaC = np.array([29.0, 129.0, 88.0, 234.0])
-vetSalaD = np.array([130.0, 36.0, 61.0, 29.0, 68.0, 81.0, 75.0])
+vetSalaA = np.array([3.0, 5.0, 10.0, 14.0])
+vetSalaB = np.array([14.0, 11.0, 7.0])
+vetSalaC = np.array([2.0, 4.0, 7.0, 9.0, 10.0])
+vetSalaD = np.array([20.0, 12.0])
 
 vetSalaA.sort()
 vetSalaB.sort()
@@ -17,7 +12,12 @@ vetSalaC.sort()
 vetSalaD.sort()
 vetSalaD = vetSalaD[::-1]
 
-def concatenaEordina(salaA,salaB,salaC,salaD):
+copiaVetSalaA = vetSalaA
+copiaVetSalaB = vetSalaB
+copiaVetSalaC = vetSalaC
+copiaVetSalaD = vetSalaD
+
+def concatenaEordina(salaA, salaB, salaC, salaD):
     allVet = np.concatenate((salaA, salaB, salaC, salaD))
     allVet.sort()
     return(allVet)
@@ -31,55 +31,101 @@ def calcolaBII(vet):
     return(max(diff))
 
 def primoAllaFine(vetSala):
-    #print("Sala prima:", vetSala)
     vetSala = vetSala[::-1]
     vetSala = np.roll(vetSala,1)
     vetSala = vetSala[::-1]
-    #print("Sala dopo", vetSala)
+    return(vetSala)
 
 def ultimoAllInizio(vetSala):
-    #print("Sala prima:", vetSala)
     vetSala = np.roll(vetSala,1)
-    #print("Sala dopo:", vetSala)
+    return(vetSala)
 
-# biiMax = calcolaBII(concatenaEordina(vetSalaA, vetSalaB, vetSalaC, vetSalaD))
-# vetSalaADopo = primoAllaFine(vetSalaA)
-# if calcolaBII(concatenaEordina(vetSalaADopo, vetSalaB, vetSalaC, vetSalaD)) >= biiMax:
-#     vetSalaADopo = vetSalaA
-# elif calcolaBII(concatenaEordina(vetSalaADopo, vetSalaB, vetSalaC, vetSalaD)) < biiMax:
-#     vetSalaBDopo = ultimoAllInizio(vetSalaB)
-#     if calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaC, vetSalaD)) >= biiMax:
-#         vetSalaBDopo = vetSalaB
-#     elif calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaC, vetSalaD)) < biiMax:
-#         vetSalaCDopo = primoAllaFine(vetSalaC)
-#         if calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaD)) >= biiMax:
-#             vetSalaCDopo = vetSalaC
-#         elif calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaD)) < biiMax:
-#             vetSalaDDopo = ultimoAllInizio(vetSalaD)
-#             if calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaD)) >= biiMax:
-#                 vetSalaDDopo = vetSalaD
-#             elif calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaD)) < biiMax:
-#                 vetSalaADopo = primoAllaFine(vetSalaA)
+biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+print("BII max iniziale", biiMax)
 
-biiMax = calcolaBII(concatenaEordina(vetSalaA, vetSalaB, vetSalaC, vetSalaD))
-vetSalaADopo = primoAllaFine(vetSalaA)
-vetSalaBDopo = ultimoAllInizio(vetSalaB)
-vetSalaCDopo = primoAllaFine(vetSalaC)
-vetSalaDDopo = ultimoAllInizio(vetSalaD)
-i = 0
-while i < 20:
-    if calcolaBII(concatenaEordina(vetSalaADopo, vetSalaB, vetSalaC, vetSalaD)) < biiMax:
-        calcola = calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaC, vetSalaD))
-        if calcola < biiMax:
-            calcola = calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaD))
-            if calcola < biiMax:
-                calcola = calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaDDopo))
-                if calcola < biiMax:
-                    print("BII", calcolaBII(concatenaEordina(vetSalaADopo, vetSalaBDopo, vetSalaCDopo, vetSalaDDopo)))
-    i += 1
-
-
-# primoAllaFine(vetSalaA)
-# ultimoAllInizio(vetSalaB)
-
-# print("BII MAX:", calcolaBII(concatenaEordina(vetSalaA, vetSalaB, vetSalaC, vetSalaD)))
+while 1:
+    if calcolaBII(concatenaEordina(primoAllaFine(copiaVetSalaA), copiaVetSalaB, copiaVetSalaC, copiaVetSalaD)) < biiMax:
+        copiaVetSalaA = primoAllaFine(copiaVetSalaA)
+        biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+        if calcolaBII(concatenaEordina(copiaVetSalaA, ultimoAllInizio(copiaVetSalaB), copiaVetSalaC, copiaVetSalaD)) < biiMax:
+            copiaVetSalaB = ultimoAllInizio(copiaVetSalaB)
+            biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+            if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, primoAllaFine(copiaVetSalaC), copiaVetSalaD)) < biiMax:
+                copiaVetSalaC = primoAllaFine(copiaVetSalaC)
+                biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 1", biiMax)
+                else:
+                    print("OK 2")
+            else:
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 3", biiMax)
+                else:
+                    print("OK 4")
+        else:
+            if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, primoAllaFine(copiaVetSalaC), copiaVetSalaD)) < biiMax:
+                copiaVetSalaC = primoAllaFine(copiaVetSalaC)
+                biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 5")
+                else:
+                    print("OK 6")
+            else:
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 7",biiMax)
+                else:
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 8",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+    else:
+        if calcolaBII(concatenaEordina(copiaVetSalaA, ultimoAllInizio(copiaVetSalaB), copiaVetSalaC, copiaVetSalaD)) < biiMax:
+            copiaVetSalaB = ultimoAllInizio(copiaVetSalaB)
+            biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+            if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, primoAllaFine(copiaVetSalaC), copiaVetSalaD)) < biiMax:
+                copiaVetSalaC = primoAllaFine(copiaVetSalaC)
+                biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 9")
+                else:
+                    print("OK 10")
+            else:
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 11",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+                else:
+                    print("OK 12",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+        else:
+            if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, primoAllaFine(copiaVetSalaC), copiaVetSalaD)) < biiMax:
+                copiaVetSalaC = primoAllaFine(copiaVetSalaC)
+                biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 13",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+                else:
+                    print("OK 14",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+            else:
+                if calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, ultimoAllInizio(copiaVetSalaD))) < biiMax:
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 15",copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+                else:
+                    copiaVetSalaA = primoAllaFine(copiaVetSalaA)
+                    copiaVetSalaB = ultimoAllInizio(copiaVetSalaB)
+                    copiaVetSalaC = primoAllaFine(copiaVetSalaC)
+                    copiaVetSalaD = ultimoAllInizio(copiaVetSalaD)
+                    #biiMax = calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD))
+                    print("OK 16", copiaVetSalaA,copiaVetSalaB,copiaVetSalaC,copiaVetSalaD, biiMax)
+    if (copiaVetSalaA == vetSalaA).all() and (copiaVetSalaB == vetSalaB).all() and (copiaVetSalaC == vetSalaC).all() and (copiaVetSalaD == vetSalaD).all():
+        print("BII max:", calcolaBII(concatenaEordina(copiaVetSalaA, copiaVetSalaB, copiaVetSalaC, copiaVetSalaD)))
+        break
