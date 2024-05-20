@@ -2,7 +2,7 @@ from pyomo.environ import *
 
 model = AbstractModel()
 
-model.BigM = 1000
+model.BigM = 10000
 
 model.I = Set()
 

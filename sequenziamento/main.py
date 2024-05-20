@@ -1,20 +1,18 @@
 import os
 
-import DataPortal
-
 from sequenziamento.model import *
 
 data = DataPortal()
-data.load(filename='data_patient.dat')
+data.load(filename='data_patient_giovedi.dat')
 instance = model.create_instance(data)
 
 # Imposta l'indirizzo email NEOS
 os.environ['NEOS_EMAIL'] = 'emanuele.rovaretto@edu.unito.it'
 
 # Imposta il solutore su NEOS
-solver_manager = SolverManagerFactory('neos')
-#solver_manager = SolverFactory('cplex', executable="/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux/cplex")
-solver_manager.options['timelimit'] = 10
+#solver_manager = SolverManagerFactory('neos')
+solver_manager = SolverFactory('cplex', executable="/opt/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux/cplex")
+solver_manager.options['timelimit'] = 60
 
 # Risolvi il problema di ottimizzazione
 results = solver_manager.solve(instance)
