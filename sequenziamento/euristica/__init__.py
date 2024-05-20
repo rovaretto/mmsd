@@ -1,9 +1,9 @@
 import numpy as np
 
-vetSalaA = np.array([5.0, 3.0, 14.0, 10.0])
-vetSalaB = np.array([14.0, 7.0, 11.0])
-vetSalaC = np.array([7.0, 4.0, 9.0, 2.0, 10.0])
-vetSalaD = np.array([12.0, 20.0])
+vetSalaA = np.array([64.0, 135.0, 62.0, 66.0, 80.0, 73.0])
+vetSalaB = np.array([107.0, 135.0, 221.0, 17.0])
+vetSalaC = np.array([29.0, 129.0, 88.0, 234.0])
+vetSalaD = np.array([130.0, 36.0, 61.0, 29.0, 68.0, 81.0, 75.0])
 
 vetSalaA.sort()
 vetSalaB.sort()
