@@ -3,7 +3,7 @@ import os
 from sequenziamento.model import *
 
 data = DataPortal()
-data.load(filename='data.dat')
+data.load(filename='parametri_modello/data.dat')
 instance = model.create_instance(data)
 
 # Imposta l'indirizzo email NEOS

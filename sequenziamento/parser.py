@@ -71,7 +71,7 @@ def createParamIo(patient):
 
 
 def createFilePatient():
-    file = open('data_patient_input_from_advanced_giovedi.dat', 'r')
+    file = open('input_from_advanced/data_patient_input_from_advanced_venerdi.dat', 'r')
     patient = file.read()
     patient = patient.split('\n')
     file.close()
@@ -84,7 +84,7 @@ def createFilePatient():
     paramP = createParamP(patient)
     paramQ = createParamIo(patient)
 
-    file = open('data_patient_giovedi.dat', 'w')
+    file = open('parametri_modello/data_patient_venerdi.dat', 'w')
     file.write(setI)
 
     file.write(paramO)

@@ -3,7 +3,7 @@ import os
 from sequenziamento.model import *
 
 data = DataPortal()
-data.load(filename='data_patient_giovedi.dat')
+data.load(filename='parametri_modello/data_patient_venerdi.dat')
 instance = model.create_instance(data)
 
 # Imposta l'indirizzo email NEOS
@@ -28,7 +28,7 @@ for i in instance.I:
 for s in sale.keys():
     sale[s] = dict(sorted(sale[s].items(),key=lambda x:x[1]))
 
-file = open('data_patient_OUTPUT.data','w')
+file = open('output/data_patient_venerdi_OUTPUT.data', 'w')
 for s in sale.keys():
     file.write("SALA " + s +'\n')
     for i in sale[s].keys():
