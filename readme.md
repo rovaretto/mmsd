@@ -1,15 +1,14 @@
-1 installare pyomo - pip install pyomo
+# ADVANCED SCHEDULING
+Il package del modello di advanced scheduling. 
+Basta eseguire il main per eseguire lo scheduling
 
-2 loggare su neos 
+# SEQUENZIAMENTO
+Il package racchiude il modello di sequenziamento.
+Basta eseguiere il main per eseguire io sequenziamento. Gli input si trovano nella cartella parametri modello
 
-3 Risolvere
- # Imposta l'indirizzo email NEOS
-os.environ['NEOS_EMAIL'] = 'emanuele.rovaretto@edu.unito.it'
+# BB 
+Eseguire il main. Per scegliere gli input in fondo commentati ci sono gli input corrispondenti ai 5 giorni della settimana. 
+Copiare e incollare all'inizio del metodo **threads** 
 
-# Imposta il solutore su NEOS
-solver_manager = pe.SolverManagerFactory('neos')
-
-
-# Risolvi il problema di ottimizzazione
-results = solver_manager.solve(model, solver="minos", load_solutions=False)
-
+# PERMUTAZIONI
+Per eseguire lanciare perm_parameter. 

@@ -283,8 +283,8 @@ int main() {
     PermSale ps;
     int sub[sizeof(durations)/4];
 
-    pre_proces(&ps, arrayA, sizeof(arrayA)/4, arrayB, sizeof(arrayB)/4, arrayC, sizeof(arrayC)/4, arrayD, sizeof(arrayD)/4,sub, 26);
-    sub[14] = 18;
+    pre_proces(&ps, arrayA, sizeof(arrayA)/4, arrayB, sizeof(arrayB)/4, arrayC, sizeof(arrayC)/4, arrayD, sizeof(arrayD)/4,sub, sizeof(sub)/4);
+    sub[19] = 18;
 
     ps.lenRidimensionataA = 4;
     ps.lenRidimensionataB = 5;
@@ -292,6 +292,7 @@ int main() {
     ps.lenRidimensionataD = 8;
     ps.substitution = sub;
     thread_launcher(ps,arrayA, sizeof(arrayA)/4, arrayB, sizeof(arrayB)/4, arrayC, sizeof(arrayC)/4, arrayD, sizeof(arrayD)/4,durations);
+
     return 0;
 }
 

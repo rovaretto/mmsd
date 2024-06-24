@@ -1,0 +1,3 @@
+/home/emanuele/Documenti/uni/magistrale/primo_anno/mmsd/progetto/permutazioni/cmake-build-debug/CMakeFiles/permutazioni.dir
+/home/emanuele/Documenti/uni/magistrale/primo_anno/mmsd/progetto/permutazioni/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/emanuele/Documenti/uni/magistrale/primo_anno/mmsd/progetto/permutazioni/cmake-build-debug/CMakeFiles/rebuild_cache.dir

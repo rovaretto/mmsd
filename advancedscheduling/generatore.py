@@ -52,8 +52,8 @@ def generateAllPatient():
     for loc in ['Basic & Regular', 'Maximum excl. University Clinics', 'Specialized']:
         for speciality in ['General', 'Gyn & Obstetrics', 'Otolaryngology', 'Trauma']:
             for typePatient in ['inpatient', 'outpatient']:
-                distribution[loc, speciality, typePatient] = caluclateDistribution(
-                    extractDistribution(loc, speciality, typePatient))
+                distribution[f"1-{loc}", speciality, typePatient] = caluclateDistribution(extractDistribution(loc, speciality, typePatient))
+                distribution[f"2-{loc}", speciality, typePatient] = caluclateDistribution(extractDistribution(loc, speciality, typePatient))
 
     return distribution
 
@@ -65,7 +65,7 @@ def generatePatientMaxMin(minute):
     for speciality in ['General', 'Gyn & Obstetrics', 'Otolaryngology', 'Trauma']:
         while timeSpeciality < minute:
             for typePatient in ['inpatient', 'outpatient']:
-                for loc in ['Basic & Regular', 'Maximum excl. University Clinics', 'Specialized']:
+                for loc in ['1-Basic & Regular', '1-Maximum excl. University Clinics', '1-Specialized','2-Basic & Regular', '2-Maximum excl. University Clinics', '2-Specialized']:
                     dist = distribution[loc, speciality, typePatient].popitem()
                     result[loc,speciality,typePatient, dist[0]] = dist[1]
                     timeSpeciality = timeSpeciality + dist[1]
@@ -74,7 +74,7 @@ def generatePatientMaxMin(minute):
     return result
 
 def hashing(key):
-    return key[0][0] + "-" + key[1][0] + key[1][1] + "-" + key[2][0] + "-" + key[3]
+    return key[0][0] + "-" + key[0][2] + "-" + key[1][0] + key[1][1] + "-" + key[2][0] + "-" + key[3]
 
 
 def createSetI(patient):
@@ -121,16 +121,16 @@ def createParamQ(patient):
         opcode = hashing(patKey)
         for speciality in ['General', 'Gyn & Obstetrics','Otolaryngology', 'Trauma']:
             if speciality == specPat:
-                result += '(' +opcode +', '+ speciality + ') 1' + "\n"
+                result += '(' +opcode +', '+ speciality.replace("Gyn & Obstetrics","Gyn_Obstetrics") + ') 1' + "\n"
             else:
-                result += '(' +opcode +', '+ speciality + ') 0' + "\n"
+                result += '(' +opcode +', '+ speciality.replace("Gyn & Obstetrics","Gyn_Obstetrics") + ') 0' + "\n"
     result += ";\n"
     return result
 
 
 
 def createFilePatient():
-    patient = generatePatientMaxMin(60 * 8 * 5 * 1.5)
+    patient = generatePatientMaxMin(60 * 8 * 5 * 3)
     setI = createSetI(patient)
 
     file_fixed_data = open('fixed_data_patient.dat', 'r')

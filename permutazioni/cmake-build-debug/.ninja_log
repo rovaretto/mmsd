@@ -1,0 +1,7 @@
+# ninja log v6
+0	40	1718719523768973642	CMakeFiles/permutazioni.dir/scheduling.cpp.o	d7683b709934efea
+1	29	1718550209265272815	CMakeFiles/permutazioni.dir/permutazioni_multithreaded.cpp.o	5d68cb6e1acb4c32
+45	64	1718726311385818043	permutazioni	6f185efacc66f0b7
+3	554	1718543501804310662	CMakeFiles/permutazioni.dir/main.cpp.o	474f8accd3c6b4b9
+1	45	1718726311341817945	CMakeFiles/permutazioni.dir/perm_parameter.cpp.o	b66480b9d550dca5
+1	11	1718749022951590710	build.ninja	100283f501a5e5b9
